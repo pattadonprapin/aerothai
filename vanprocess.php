@@ -52,13 +52,13 @@
             <ul class="nav navbar-top-links navbar-center">
 
                     <li>
-                        <a class="page-scroll" href="bookinglist.html"><i class="fa fa-list-alt fa-lg"></i><font color="#798481" size="4">&nbsp; รายการจองรถตู้</a></font>
+                        <a class="page-scroll" href="bookinglist.php"><i class="fa fa-list-alt fa-lg"></i><font color="#798481" size="4">&nbsp; รายการจองรถตู้</a></font>
                     </li>
                     <li>
-                        <a class="page-scroll" href="vandetail.html"><i class="fa fa-bus fa-lg"></i><font color="#798481" size="4">&nbsp; ข้อมูลรถตู้</a></font>
+                        <a class="page-scroll" href="vandetail.php"><i class="fa fa-bus fa-lg"></i><font color="#798481" size="4">&nbsp; ข้อมูลรถตู้</a></font>
                     </li>
                     <li>
-                        <a class="page-scroll" href="vanprocess.html"><i class="fa fa-bars fa-lg"></i><font color="#798481" size="4">&nbsp; ขั้นตอนการจองรถตู้</a></font>
+                        <a class="page-scroll" href="vanprocess.php"><i class="fa fa-bars fa-lg"></i><font color="#798481" size="4">&nbsp; ขั้นตอนการจองรถตู้</a></font>
                     </li>
                 </ul>
 
@@ -69,21 +69,21 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                       <li>
-                            <a href="viewcalendar.html"><i class="fa fa-calendar-o fa-lg"></i><font color="#798481" size="4">&nbsp; ข้อมูลแบบปฏิทิน</a></font>
+                            <a href="viewcalendar.php"><i class="fa fa-calendar-o fa-lg"></i><font color="#798481" size="4">&nbsp; ข้อมูลแบบปฏิทิน</a></font>
                         </li>
                         <br>
                         <li>
-                            <a href="viewtable.html"><i class="fa fa-table fa-lg"></i><font color="#798481" size="4"> &nbsp; ข้อมูลแบบตาราง</a></font>
+                            <a href="viewtable.php"><i class="fa fa-table fa-lg"></i><font color="#798481" size="4"> &nbsp; ข้อมูลแบบตาราง</a></font>
                         </li>
                         <br>
                         <li>
-                            <a href="statsvan.html"><i class="fa fa-bar-chart fa-lg"></i><font color="#798481" size="4"> &nbsp; สถิติการใช้รถยนต์</a></font>
+                            <a href="statsvan.php"><i class="fa fa-bar-chart fa-lg"></i><font color="#798481" size="4"> &nbsp; สถิติการใช้รถยนต์</a></font>
                         </li>
                         <br>
                         <li>
-                            <a href="index.html"><i class="fa fa-arrow-circle-left fa-lg"></i><font color="#798481" size="4"> &nbsp; กลับสู่หน้าหลัก</a></font>
+                            <a href="index.php"><i class="fa fa-arrow-circle-left fa-lg"></i><font color="#798481" size="4"> &nbsp; กลับสู่หน้าหลัก</a></font>
                         </li>
-                     <li class="btn-danger divider" style="height:3px;"></li>  
+                       <li class="btn-danger divider" style="height:3px;"></li>  
 
                             <div class="input-group custom-search-form">
                                   <form role="form" action="#" method="post" name="login">
@@ -99,7 +99,7 @@
                                             <input type="password" class="form-control" name="password" placeholder="Password" required>
                                         </div>
                                         &nbsp;
-                                        <button type="submit" class="btn btn-success ">เข้าสู่ระบบ</button>
+                                        <button type="submit" class="btn btn-success "><i class="fa fa-sign-in fa-fw"></i>&nbsp;เข้าสู่ระบบ</button>
                                   
                                     </form>
                             </div>
@@ -115,7 +115,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h3 class="page-header alert btn-info"><i class="fa fa-calendar-o fa-fw"></i>&nbsp; ข้อมูลแบบปฏิทิน</h3>
+                    <h3 class="page-header alert btn-info"><i class="fa fa-bars fa-fw"></i>&nbsp; ขั้นตอนการจองรถตู้</h3>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
