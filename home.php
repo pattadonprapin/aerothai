@@ -47,7 +47,7 @@ session_start();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="home.php">
                     <img src = "image/band.png" width="250" height="50" >        
                 </a>
             </div>
@@ -85,7 +85,7 @@ session_start();
                         </li>
                         <br>
                         <li>
-                            <a href="index.php"><i class="fa fa-arrow-circle-left fa-lg"></i><font color="#798481" size="4"> &nbsp; กลับสู่หน้าหลัก</a></font>
+                            <a href="home.php"><i class="fa fa-arrow-circle-left fa-lg"></i><font color="#798481" size="4"> &nbsp; กลับสู่หน้าหลัก</a></font>
                         </li>
                          <li class="btn-danger divider" style="height:3px;"></li>  
                                 <br>
