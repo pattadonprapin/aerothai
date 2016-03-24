@@ -47,7 +47,7 @@ session_start();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="home.php">
+                <a class="navbar-brand" href="index.html">
                     <img src = "image/band.png" width="250" height="50" >        
                 </a>
             </div>
@@ -55,13 +55,13 @@ session_start();
             <ul class="nav navbar-top-links navbar-center">
 
                     <li>
-                        <a class="page-scroll" href="bookinglist.php"><i class="fa fa-list-alt fa-lg"></i><font color="#798481" size="4">&nbsp; รายการจองรถตู้</a></font>
+                        <a class="page-scroll" href="bookinglist.html"><i class="fa fa-list-alt fa-lg"></i><font color="#798481" size="4">&nbsp; รายการจองรถตู้</a></font>
                     </li>
                     <li>
-                        <a class="page-scroll" href="vandetail.php"><i class="fa fa-bus fa-lg"></i><font color="#798481" size="4">&nbsp; ข้อมูลรถตู้</a></font>
+                        <a class="page-scroll" href="vandetail.html"><i class="fa fa-bus fa-lg"></i><font color="#798481" size="4">&nbsp; ข้อมูลรถตู้</a></font>
                     </li>
                     <li>
-                        <a class="page-scroll" href="vanprocess.php"><i class="fa fa-bars fa-lg"></i><font color="#798481" size="4">&nbsp; ขั้นตอนการจองรถตู้</a></font>
+                        <a class="page-scroll" href="vanprocess.html"><i class="fa fa-bars fa-lg"></i><font color="#798481" size="4">&nbsp; ขั้นตอนการจองรถตู้</a></font>
                     </li>
                 </ul>
                 
@@ -73,19 +73,19 @@ session_start();
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                       <li>
-                            <a href="viewcalendar.php"><i class="fa fa-calendar-o fa-lg"></i><font color="#798481" size="4">&nbsp; ข้อมูลแบบปฏิทิน</a></font>
+                            <a href="viewcalendar.html"><i class="fa fa-calendar-o fa-lg"></i><font color="#798481" size="4">&nbsp; ข้อมูลแบบปฏิทิน</a></font>
                         </li>
                         <br>
                         <li>
-                            <a href="viewtable.php"><i class="fa fa-table fa-lg"></i><font color="#798481" size="4"> &nbsp; ข้อมูลแบบตาราง</a></font>
+                            <a href="viewtable.html"><i class="fa fa-table fa-lg"></i><font color="#798481" size="4"> &nbsp; ข้อมูลแบบตาราง</a></font>
                         </li>
                         <br>
                         <li>
-                            <a href="statsvan.php"><i class="fa fa-bar-chart fa-lg"></i><font color="#798481" size="4"> &nbsp; สถิติการใช้รถยนต์</a></font>
+                            <a href="statsvan.html"><i class="fa fa-bar-chart fa-lg"></i><font color="#798481" size="4"> &nbsp; สถิติการใช้รถยนต์</a></font>
                         </li>
                         <br>
                         <li>
-                            <a href="home.php"><i class="fa fa-arrow-circle-left fa-lg"></i><font color="#798481" size="4"> &nbsp; กลับสู่หน้าหลัก</a></font>
+                            <a href="index.html"><i class="fa fa-arrow-circle-left fa-lg"></i><font color="#798481" size="4"> &nbsp; กลับสู่หน้าหลัก</a></font>
                         </li>
                          <li class="btn-danger divider" style="height:3px;"></li>  
                                 <br>
@@ -93,9 +93,11 @@ session_start();
                                 <font color="#798481" size="4"> &nbsp; ยินดีต้อนรับ:</a></font>
 
                                     <?php
+                                    error_reporting(0);
                                     if ($_SESSION["user_id"] != null){
                                         echo $_SESSION["user_name"];
                                     }else {
+
                                         echo "โปรดเข้าสู่ระบบ" ;
                                     }
                                     ?>
