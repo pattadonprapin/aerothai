@@ -1,0 +1,17 @@
+
+body {
+	background-color: none;
+}
+
+.navbar {
+   background-color:#EAF9FB;
+   background-image: none;
+ }
+
+.input-group{
+	padding: 10px;
+}
+
+.btn btn-default{
+	padding: 10px;
+}
