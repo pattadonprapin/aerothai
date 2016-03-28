@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+session_start();
+
+error_reporting(0);
+if ($_SESSION["user_id"] != null){
+?>
 
 <head>
 
@@ -46,13 +52,13 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="index.php">
-                    <img src = "image/band.png" width="250" height="50" >        
+                    <img src = "image/band.png" width="250" height="50" >
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <ul class="nav navbar-top-links navbar-center">
 
-                    
+
                 </ul>
                 <br>
 
@@ -65,8 +71,8 @@
                         <li>
                             <a href="home.php"><i class="fa fa-arrow-circle-left fa-lg"></i><font color="#798481" size="4"> &nbsp; กลับสู่หน้าหลัก</a></font>
                         </li>
-                        
-                             <li class="btn-danger divider" style="height:3px;"></li>  
+
+                             <li class="btn-danger divider" style="height:3px;"></li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -86,7 +92,7 @@
                     <div class="form-group form-group-lg">
                       <h3 for="disabledSelect">ต้องการขอใช้รถตู้คันที่</h3>
                       <select id="disabledSelect" class="form-control input-lg">
-                        <option>คันที่ 1</option>                              
+                        <option>คันที่ 1</option>
                         <option>คันที่ 2</option>
                         <option>คันที่ 3</option>
                         <option>คันที่ 4</option>
@@ -107,7 +113,7 @@
                        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
                    </div>
 
-                    
+
                    <h3 class="control-label" for="date">วันเดินกลับ</h3>
                     <div class="input-group form-group-lg">
                         <div class="input-group-addon">
@@ -116,14 +122,14 @@
                        </div>
                        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
                    </div>
-                   <br>  
+                   <br>
 
-                   <div align="center">            
+                   <div align="center">
                     <button type="submit" class="btn btn-info btn-lg">ยืนยัน</button>
                    </div>
                 </form>
-                   <br>      
-                   <br>      
+                   <br>
+                   <br>
 
             </div>
         </div>
@@ -164,3 +170,7 @@
 </body>
 
 </html>
+<?php
+}else {
+    header("Location:index.php");
+}?>

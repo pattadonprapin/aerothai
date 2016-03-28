@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <?php
 session_start();
+
+error_reporting(0);
+if ($_SESSION["user_id"] != null){
 ?>
 <html lang="en">
 
@@ -48,7 +51,7 @@ session_start();
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="index.php">
-                    <img src = "image/band.png" width="250" height="50" >        
+                    <img src = "image/band.png" width="250" height="50" >
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -64,7 +67,7 @@ session_start();
                         <a class="page-scroll" href="vanprocess.php"><i class="fa fa-bars fa-lg"></i><font color="#798481" size="4">&nbsp; ขั้นตอนการจองรถตู้</a></font>
                     </li>
                 </ul>
-                
+
 
             <!-- /.navbar-collapse -->
         <!-- /.container -->
@@ -87,24 +90,16 @@ session_start();
                         <li>
                             <a href="index.php"><i class="fa fa-arrow-circle-left fa-lg"></i><font color="#798481" size="4"> &nbsp; กลับสู่หน้าหลัก</a></font>
                         </li>
-                         <li class="btn-danger divider" style="height:3px;"></li>  
+                         <li class="btn-danger divider" style="height:3px;"></li>
                                 <br>
-                                <li> 
+                                <li>
                                 <font color="#798481" size="4"> &nbsp; ยินดีต้อนรับ:</a></font>
+                                      <?php  echo $_SESSION["user_name"];?>
 
-                                    <?php
-                                    error_reporting(0);
-                                    if ($_SESSION["user_id"] != null){
-                                        echo $_SESSION["user_name"];
-                                    }else {
-
-                                        echo "โปรดเข้าสู่ระบบ" ;
-                                    }
-                                    ?>
-                                <br>                                 
+                                <br>
                                 <a href="logout.php"><button class="btn btn-danger"><i class="fa fa-sign-out fa-fw"></i>ออกจากระบบ</button></a>
                              </li>
-                             <li class="btn-danger divider" style="height:3px;"></li>  
+                             <li class="btn-danger divider" style="height:3px;"></li>
 
                     </ul>
                 </div>
@@ -138,7 +133,7 @@ session_start();
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                  <img src = "image/van1.png" width="250" height="160" >        
+                                  <img src = "image/van1.png" width="250" height="160" >
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -160,7 +155,7 @@ session_start();
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                  <img src = "image/van2.png" width="250" height="160" >        
+                                  <img src = "image/van2.png" width="250" height="160" >
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -182,7 +177,7 @@ session_start();
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                  <img src = "image/van3.png" width="250" height="160" >        
+                                  <img src = "image/van3.png" width="250" height="160" >
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -204,7 +199,7 @@ session_start();
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                  <img src = "image/van4.png" width="250" height="160" >        
+                                  <img src = "image/van4.png" width="250" height="160" >
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -220,10 +215,10 @@ session_start();
                 <br>
                 <br>
                 <br>
-                   
-                   
+
+
         </nav>
-               
+
     </div>
 
     <!-- /#wrapper -->
@@ -238,3 +233,7 @@ session_start();
 </body>
 
 </html>
+<?php
+}else {
+    header("Location:index.php");
+}?>

@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+session_start();
+
+error_reporting(0);
+if ($_SESSION["user_id"] != null){
+?>
 
 <head>
 
@@ -47,7 +53,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="index.php">
-                    <img src = "image/band.png" width="250" height="50" >        
+                    <img src = "image/band.png" width="250" height="50" >
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -85,28 +91,18 @@
                         <li>
                             <a href="index.php"><i class="fa fa-arrow-circle-left fa-lg"></i><font color="#798481" size="4"> &nbsp; กลับสู่หน้าหลัก</a></font>
                         </li>
-                     <li class="btn-danger divider" style="height:3px;"></li>  
+                        <li class="btn-danger divider" style="height:3px;"></li>
+                               <br>
+                               <li>
+                               <font color="#798481" size="4"> &nbsp; ยินดีต้อนรับ:</a></font>
+                                     <?php  echo $_SESSION["user_name"];?>
 
-                            <div class="input-group custom-search-form">
-                                  <form role="form" action="#" method="post" name="login">
-                                        <div class="form-group input-group">
-                                            <span class="input-group-addon"><i class="fa fa-user"></i>
-                                            </span>
-                                            <input type="text" class="form-control" name="username" placeholder="Username" required>
-                                        </div>
-                                        
-                                        <div class="form-group input-group">
-                                            <span class="input-group-addon"><i class="fa fa-key"></i>
-                                            </span>
-                                            <input type="password" class="form-control" name="password" placeholder="Password" required>
-                                        </div>
-                                        &nbsp;
-                                        <button type="submit" class="btn btn-success "><i class="fa fa-sign-in fa-fw"></i>&nbsp;เข้าสู่ระบบ</button>
-                                  
-                                    </form>
-                            </div>
-                             <li class="btn-danger divider" style="height:3px;"></li>  
-                    </ul>
+                               <br>
+                               <a href="logout.php"><button class="btn btn-danger"><i class="fa fa-sign-out fa-fw"></i>ออกจากระบบ</button></a>
+                            </li>
+                            <li class="btn-danger divider" style="height:3px;"></li>
+
+                   </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
             </div>
@@ -136,3 +132,7 @@
 </body>
 
 </html>
+<?php
+}else {
+    header("Location:index.php");
+}?>
