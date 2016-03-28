@@ -28,7 +28,10 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <?php
+    include 'connectDB.php';
+    $result = $mysqli->query("SELECT * FROM `vandetail`");
+    ?>
 </head>
 
 <body>
@@ -118,6 +121,32 @@
                     <h3 class="page-header alert btn-info"><i class="fa fa-bus fa-fw"></i>&nbsp; ข้อมูลรถตู้</h3>
                 </div>
                 <!-- /.col-lg-12 -->
+            </div>
+            <div class="col-lg-12">
+                <table class="table">
+                    <thead class="thead-default">
+                    <tr>
+                        <th>ลำดับที่</th>
+                        <th>ยี่ห้อ</th>
+                        <th>รายละเอียด</th>
+                        <th>คนขับรถ</th>
+                        <th>ป้ายทะเบียนรถ</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    $row = $result->fetch_assoc();
+                    echo
+                    "<tr>
+                    <th>{$row['id']}</th>
+                    <th>{$row['name']}</th>
+                    <th>{$row['detail']}</th>
+                    <th>{$row['driver']}</th>
+                    <th>{$row['license']}</th>
+                    </tr>\n";
+                    ?>
+                    </tbody>
+                </table>
             </div>
             <!-- /.row -->               
     </div>

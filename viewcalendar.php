@@ -19,6 +19,8 @@
     <link href="css/sb-admin-2.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
+
+
      <!-- Custom Fonts -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
@@ -119,8 +121,8 @@
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-            <!-- /.row -->               
-    </div>
+            <!-- /.row -->
+         </div>
 
     <!-- /#wrapper -->
     </nav>
