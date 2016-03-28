@@ -1,4 +1,6 @@
+
 <!DOCTYPE html>
+<?php    session_start();?>
 <html lang="en">
 
 <head>
@@ -45,7 +47,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="index.php">
-                    <img src = "image/band.png" width="250" height="50" >        
+                    <img src = "image/band.png" width="250" height="50" >
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -61,7 +63,7 @@
                         <a class="page-scroll" href="vanprocess.php"><i class="fa fa-bars fa-lg"></i><font color="#798481" size="4">&nbsp; ขั้นตอนการจองรถตู้</a></font>
                     </li>
                 </ul>
-                
+
 
             <!-- /.navbar-collapse -->
         <!-- /.container -->
@@ -84,27 +86,47 @@
                         <li>
                             <a href="index.php"><i class="fa fa-arrow-circle-left fa-lg"></i><font color="#798481" size="4"> &nbsp; กลับสู่หน้าหลัก</a></font>
                         </li>
-                         <li class="btn-danger divider" style="height:3px;"></li>  
+                         <li class="btn-danger divider" style="height:3px;"></li>
+                         <?php
 
-                            <div class="input-group custom-search-form">
-                                  <form role="form" action="check_login.php" method="post" name="login">
-                                        <div class="form-group input-group">
-                                            <span class="input-group-addon"><i class="fa fa-user"></i>
-                                            </span>
-                                            <input type="text" class="form-control" name="txtUsername" placeholder="Username" required>
-                                        </div>
-                                        
-                                        <div class="form-group input-group">
-                                            <span class="input-group-addon"><i class="fa fa-key"></i>
-                                            </span>
-                                            <input type="password" class="form-control" name="txtPassword" placeholder="Password" required>
-                                        </div>
-                                        &nbsp;
-                                        <button type="submit" class="btn btn-success "><i class="fa fa-sign-in fa-fw"></i>&nbsp;เข้าสู่ระบบ</button>
 
-                                  </form>
-                            </div>
-                             <li class="btn-danger divider" style="height:3px;"></li>  
+                         error_reporting(0);
+                         if ($_SESSION["user_id"] != null){
+                         ?>
+                        <?php echo'
+
+                        <li class="btn-danger divider" style="height:3px;"></li>
+                               <br>
+                               <li>
+                               <font color="#798481" size="4"> &nbsp; ยินดีต้อนรับ:</a></font>';?>
+                                     <?php  echo $_SESSION["user_name"];?>
+                                  <?php echo'
+                               <br>
+                               <a href="logout.php"><button class="btn btn-danger"><i class="fa fa-sign-out fa-fw"></i>ออกจากระบบ</button></a>
+                            </li>';?>
+
+                      <?php }else{
+                        echo'  <div class="input-group custom-search-form">
+                                <form role="form" action="check_login.php" method="post" name="login">
+                                      <div class="form-group input-group">
+                                          <span class="input-group-addon"><i class="fa fa-user"></i>
+                                          </span>
+                                          <input type="text" class="form-control" name="txtUsername" placeholder="Username" required>
+                                      </div>
+
+                                      <div class="form-group input-group">
+                                          <span class="input-group-addon"><i class="fa fa-key"></i>
+                                          </span>
+                                          <input type="password" class="form-control" name="txtPassword" placeholder="Password" required>
+                                      </div>
+                                      &nbsp;
+                                      <button type="submit" class="btn btn-success "><i class="fa fa-sign-in fa-fw"></i>&nbsp;เข้าสู่ระบบ</button>
+
+                                </form>
+                          </div>';
+                        } ?>
+
+                             <li class="btn-danger divider" style="height:3px;"></li>
 
                     </ul>
                 </div>
@@ -138,7 +160,7 @@
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                  <img src = "image/van1.png" width="250" height="160" >        
+                                  <img src = "image/van1.png" width="250" height="160" >
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -160,7 +182,7 @@
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                  <img src = "image/van2.png" width="250" height="160" >        
+                                  <img src = "image/van2.png" width="250" height="160" >
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -182,7 +204,7 @@
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                  <img src = "image/van3.png" width="250" height="160" >        
+                                  <img src = "image/van3.png" width="250" height="160" >
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -204,7 +226,7 @@
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                  <img src = "image/van4.png" width="250" height="160" >        
+                                  <img src = "image/van4.png" width="250" height="160" >
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -212,9 +234,9 @@
                     </div>
                 </div>
             </div>
-                   
+
         </nav>
-               
+
     </div>
 
     <!-- /#wrapper -->
