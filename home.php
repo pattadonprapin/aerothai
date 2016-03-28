@@ -212,6 +212,15 @@ session_start();
                     </div>
                 </div>
             </div>
+            
+            <br>
+                <div align="center">
+                    <a href="bookingform.php"><button class="btn btn-info btn-lg"><i class="fa fa-heart fa-fw"></i>&nbsp;ขอใช้รถตู้</button></a>
+                </div>
+                <br>
+                <br>
+                <br>
+                   
                    
         </nav>
                
