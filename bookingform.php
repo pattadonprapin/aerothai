@@ -104,22 +104,22 @@ if ($_SESSION["user_id"] != null){
                         <textarea class="form-control" id="disabledTextInput" rows="5" placeholder="กรอกภาระกิจ"></textarea>
                     </div>
 
-                    <h3 class="control-label" for="date">วันออกเดินทาง</h3>
+                    <h3 class="control-label" for="date">วันและเวลาออกเดินทาง</h3>
                     <div class="input-group form-group-lg">
                         <div class="input-group-addon">
                             <i class="fa fa-calendar">
                             </i>
                         </div>
-                        <input  id="date" name="date" type="datetime-local"/>
+                        <input  class="form-control" id="date" name="date" type="datetime-local"/>
                     </div>
 
-                    <h3 class="control-label" for="date">วันเดินกลับ</h3>
+                    <h3 class="control-label" for="date">วันและเวลาเดินกลับ</h3>
                     <div class="input-group form-group-lg">
                         <div class="input-group-addon">
                             <i class="fa fa-calendar">
                             </i>
                         </div>
-                        <input id="date" name="date" type="datetime-local"/>
+                        <input class="form-control" id="date" name="date" type="datetime-local"/>
                     </div>
                    <br>
 
@@ -148,22 +148,6 @@ if ($_SESSION["user_id"] != null){
     <!-- Include Date Range Picker -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-
-    <script>
-    $(document).ready(function(){
-        var date_input=$('input[name="date"]'); //our date input has the name "date"
-        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-        date_input.datepicker({
-            format: 'mm/dd/yyyy',
-            container: container,
-            todayHighlight: true,
-            autoclose: true,
-        })
-    })
-    </script>
-
-
-
 
 
 </body>
