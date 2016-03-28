@@ -107,21 +107,20 @@ if ($_SESSION["user_id"] != null){
                     <h3 class="control-label" for="date">วันออกเดินทาง</h3>
                     <div class="input-group form-group-lg">
                         <div class="input-group-addon">
-                           <i class="fa fa-calendar">
-                           </i>
-                       </div>
-                       <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
-                   </div>
+                            <i class="fa fa-calendar">
+                            </i>
+                        </div>
+                        <input  id="date" name="date" type="datetime-local"/>
+                    </div>
 
-
-                   <h3 class="control-label" for="date">วันเดินกลับ</h3>
+                    <h3 class="control-label" for="date">วันเดินกลับ</h3>
                     <div class="input-group form-group-lg">
                         <div class="input-group-addon">
-                           <i class="fa fa-calendar">
-                           </i>
-                       </div>
-                       <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY" type="text"/>
-                   </div>
+                            <i class="fa fa-calendar">
+                            </i>
+                        </div>
+                        <input id="date" name="date" type="datetime-local"/>
+                    </div>
                    <br>
 
                    <div align="center">
