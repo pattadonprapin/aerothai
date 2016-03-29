@@ -24,6 +24,7 @@ if ($_SESSION["user_id"] != null){
     <link href="css/logo-nav.css" rel="stylesheet">
     <link href="css/sb-admin-2.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/timeline.css" rel="stylesheet">
 
      <!-- Custom Fonts -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -109,120 +110,130 @@ if ($_SESSION["user_id"] != null){
         </nav>
     </div>
 
-        <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                 <h3 class="page-header alert btn-info"><i class="fa fa-comment fa-fw"></i>&nbsp; สถานะรถตู้</h3>
+          <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                     <h3 class="page-header alert btn-info"><i class="fa fa-comment fa-fw"></i>&nbsp; สถานะรถตู้</h3>
+                    </div>
+                    <!-- /.col-lg-12 -->
                 </div>
-                <!-- /.col-lg-12 -->
+                <div align="right" >
+                <div class="btn-group">
+                  <button class="btn">เลือกรถตู้</button>
+                  <button class="btn dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">คันที่1</a></li>
+                    <li><a href="#">คันที่2</a></li>
+                    <li><a href="#">คันที่3</a></li>
+                    <li><a href="#">คันที่4</a></li>
+                </ul>
             </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-6 col-md-9">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-bus fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">ว่าง</div>
-                                    <div>กก-1111</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                  <img src = "image/van1.png" width="250" height="160" >
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-9">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-bus fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">ว่าง</div>
-                                    <div>ขข-2222</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                  <img src = "image/van2.png" width="250" height="160" >
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-9">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-bus fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">ว่าง</div>
-                                    <div>คค-3333</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                  <img src = "image/van3.png" width="250" height="160" >
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-9">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-bus fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">ไม่ว่าง</div>
-                                    <div>งง-4444</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                  <img src = "image/van4.png" width="250" height="160" >
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
             </div>
 
-            <br>
-                <div align="center">
-                    <a href="bookingform.php"><button class="btn btn-info btn-lg"><i class="fa fa-heart fa-fw"></i>&nbsp;ขอใช้รถตู้</button></a>
+                <!-- /.row -->
+                 <div class="row">
+                    <div class="timeline timeline-single-column">
+
+                        <span class="timeline-label">
+                            <span class="label label-info">29.03.2559</span>
+                        </span>
+
+                        <div class="timeline-item">
+                            <div class="timeline-point timeline-point-info">
+                                <i class="fa fa-bus"></i>
+                            </div>
+                            <div class="timeline-event timeline-event-success">
+                                <div class="timeline-heading">
+                                    <h4>ชื่อภาระกิจ</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>รายละเอียดภาระกิจ</p>
+                                </div>
+                                <div class="timeline-footer primary">
+                                    <p class="text-right">29.03.2559 ถึง 03.04.2559</p>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="timeline-item">
+                            <div class="timeline-point timeline-point-info">
+                                <i class="fa fa-bus"></i>
+                            </div>
+                            <div class="timeline-event timeline-event-success">
+                                <div class="timeline-heading">
+                                    <h4>ชื่อภาระกิจ</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>รายละเอียดภาระกิจ</p>
+                                </div>
+                                <div class="timeline-footer primary">
+                                    <p class="text-right">29.03.2559 ถึง 03.04.2559</p>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="timeline-item">
+                            <div class="timeline-point timeline-point-info">
+                                <i class="fa fa-bus"></i>
+                            </div>
+                            <div class="timeline-event timeline-event-success">
+                                <div class="timeline-heading">
+                                    <h4>ชื่อภาระกิจ</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>รายละเอียดภาระกิจ</p>
+                                </div>
+                                <div class="timeline-footer primary">
+                                    <p class="text-right">29.03.2559 ถึง 03.04.2559</p>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="timeline-item">
+                            <div class="timeline-point timeline-point-info">
+                                <i class="fa fa-bus"></i>
+                            </div>
+                            <div class="timeline-event timeline-event-success">
+                                <div class="timeline-heading">
+                                    <h4>ชื่อภาระกิจ</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>รายละเอียดภาระกิจ</p>
+                                </div>
+                                <div class="timeline-footer primary">
+                                    <p class="text-right">29.03.2559 ถึง 03.04.2559</p>
+                                </div>
+                            </div>
+                        </div>
+
+                         <div class="timeline-item">
+                            <div class="timeline-point timeline-point-info">
+                                <i class="fa fa-bus"></i>
+                            </div>
+                            <div class="timeline-event timeline-event-success">
+                                <div class="timeline-heading">
+                                    <h4>ชื่อภาระกิจ</h4>
+                                </div>
+                                <div class="timeline-body">
+                                    <p>รายละเอียดภาระกิจ</p>
+                                </div>
+                                <div class="timeline-footer primary">
+                                    <p class="text-right">29.03.2559 ถึง 03.04.2559</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <br>
-                <br>
-                <br>
+            </div>
 
+            </nav>
+                   
+        </div>
 
+        <!-- /#wrapper -->
         </nav>
-
-    </div>
-
-    <!-- /#wrapper -->
-    </nav>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
