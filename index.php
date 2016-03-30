@@ -96,7 +96,7 @@
                          ?>
                         <?php echo'
 
-                        <li class="btn-danger divider" style="height:3px;"></li>
+                        
                                <br>
                                <li>
                                <font color="#798481" size="4"> &nbsp; ยินดีต้อนรับ:</a></font>';?>
@@ -161,7 +161,7 @@
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                  <img src = "image/van1.png" width="250" height="160" >        
+                                  <img src = "image/van1.png" width="250" height="160" >
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -183,7 +183,7 @@
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                  <img src = "image/van2.png" width="250" height="160" >        
+                                  <img src = "image/van2.png" width="250" height="160" >
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -205,7 +205,7 @@
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                  <img src = "image/van3.png" width="250" height="160" >        
+                                  <img src = "image/van3.png" width="250" height="160" >
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -227,7 +227,7 @@
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                  <img src = "image/van4.png" width="250" height="160" >        
+                                  <img src = "image/van4.png" width="250" height="160" >
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -236,7 +236,7 @@
                 </div>
             </div>
         </nav>
-               
+
     </div>
 
     <!-- /#wrapper -->
