@@ -131,7 +131,8 @@ if ($_SESSION["user_id"] != null){
                     </thead>
                     <tbody>
                     <?php
-                    $row = $result->fetch_assoc();
+
+                    while ( $row = $result->fetch_assoc()) {
                     echo
                     "<tr>
                     <th>{$row['id']}</th>
@@ -140,6 +141,7 @@ if ($_SESSION["user_id"] != null){
                     <th>{$row['driver']}</th>
                     <th>{$row['license']}</th>
                     </tr>\n";
+                        }
                     ?>
                     </tbody>
                 </table>
