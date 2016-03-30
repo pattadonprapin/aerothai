@@ -118,113 +118,74 @@ if ($_SESSION["user_id"] != null){
                     <!-- /.col-lg-12 -->
                 </div>
 
-                 <div align="right">
+                 <div align="right" >
                     <a href="bookingform.php"><button class="btn btn-info btn-lg"><i class="fa fa-heart fa-fw"></i>&nbsp;ขอใช้รถตู้</button></a>
                 &nbsp;
-                <div class="btn-group">
-                  <button class="btn">เลือกรถตู้</button>
-                  <button class="btn dropdown-toggle" data-toggle="dropdown">
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">คันที่1</a></li>
-                    <li><a href="#">คันที่2</a></li>
-                    <li><a href="#">คันที่3</a></li>
-                    <li><a href="#">คันที่4</a></li>
-                </ul>
-            </div>
-
-            </div>
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                <select name="selectVan" onchange="this.form.submit();" >
+                    <option value="">ลำดับรถตู้</option>
+                    <option value="1">คันที่1</option>
+                    <option value="2">คันที่2</option>
+                    <option value="3">คันที่3</option>
+                    <option value="4">คันที่4</option>
+                </select>
+                </form>
+                </div>
 
                 <!-- /.row -->
                  <div class="row">
                     <div class="timeline timeline-single-column">
 
                         <span class="timeline-label">
-                            <span class="label label-info">29.03.2559</span>
+                            <span class="label label-info">
+                                <?php
+                                echo date("d/m/Y") ;
+                                ?>
+
+                            </span>
                         </span>
-
                         <div class="timeline-item">
-                            <div class="timeline-point timeline-point-info">
-                                <i class="fa fa-bus"></i>
-                            </div>
-                            <div class="timeline-event timeline-event-success">
-                                <div class="timeline-heading">
-                                    <h4>ภาระกิจ</h4>
-                                </div>
-                                <div class="timeline-footer primary">
-                                    <p class="text-right">29.03.2559 ถึง 03.04.2559</p>
-                                </div>
-                            </div>
-                        </div>
 
-                         <div class="timeline-item">
-                            <div class="timeline-point timeline-point-info">
-                                <i class="fa fa-bus"></i>
-                            </div>
-                            <div class="timeline-event timeline-event-success">
-                                <div class="timeline-heading">
-                                    <h4>ภาระกิจ</h4>
-                                </div>
-                                <div class="timeline-footer primary">
-                                    <p class="text-right">29.03.2559 ถึง 03.04.2559</p>
-                                </div>
-                            </div>
-                        </div>
+                        <?php
+                        include 'connectDB.php';
 
-                         <div class="timeline-item">
-                            <div class="timeline-point timeline-point-info">
-                                <i class="fa fa-bus"></i>
-                            </div>
-                            <div class="timeline-event timeline-event-success">
-                                <div class="timeline-heading">
-                                    <h4>ภาระกิจ</h4>
-                                </div>
-                                <div class="timeline-footer primary">
-                                    <p class="text-right">29.03.2559 ถึง 03.04.2559</p>
-                                </div>
-                            </div>
-                        </div>
+                        if(isset($_POST['selectVan'])) {
 
-                         <div class="timeline-item">
-                            <div class="timeline-point timeline-point-info">
-                                <i class="fa fa-bus"></i>
-                            </div>
-                            <div class="timeline-event timeline-event-success">
-                                <div class="timeline-heading">
-                                    <h4>ภาระกิจ</h4>
-                                </div>
-                                <div class="timeline-footer primary">
-                                    <p class="text-right">29.03.2559 ถึง 03.04.2559</p>
-                                </div>
-                            </div>
-                        </div>
+                            $van_id = $_POST['selectVan'];
+                            $status = 1;
+                            $result = $mysqli->query("SELECT * FROM `timeline` WHERE van_id = '" . $van_id . "' AND status = '" . $status . "'");
+                            while ($row = $result->fetch_assoc()) {
+                                if ($row == 0) {
+                                    ?>
+                                    <script type="text/javascript">
+                                        alert("รถตู้คันนี้ไม่มีภาระกิจ !!!!");
 
-                         <div class="timeline-item">
-                            <div class="timeline-point timeline-point-info">
-                                <i class="fa fa-bus"></i>
-                            </div>
-                            <div class="timeline-event timeline-event-success">
-                                <div class="timeline-heading">
-                                    <h4>ภาระกิจ</h4>
-                                </div>
-                                <div class="timeline-footer primary">
-                                    <p class="text-right">29.03.2559 ถึง 03.04.2559</p>
-                                </div>
-                            </div>
+                                    </script>
+                                    <?php
+                                } else {
+                                    echo
+                                    "
+                                        <div class=\"timeline-point timeline-point-info\">
+                                        <i class=\"fa fa-bus\"></i>
+                                         </div>
+                                        <div class=\"timeline-event timeline-event-success\">
+                                        <div class=\"timeline-heading\">
+                                        <h4>{$row['task']}</h4>
+                                         </div>
+                                        <div class=\"timeline-footer primary\">
+                                            <p class=\"text-right\">{$row['go']}</p>
+                                        </div>
+                                        </div>";
+                                }
+                            }
+                        }
+                        ?>
                         </div>
-                    </div>
                 </div>
             </div>
                 <br>
                 <br>
                 <br>
-            </nav>
-                   
-        </div>
-
-        <!-- /#wrapper -->
-        </nav>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
