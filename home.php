@@ -117,7 +117,10 @@ if ($_SESSION["user_id"] != null){
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
-                <div align="right" >
+
+                 <div align="right">
+                    <a href="bookingform.php"><button class="btn btn-info btn-lg"><i class="fa fa-heart fa-fw"></i>&nbsp;ขอใช้รถตู้</button></a>
+                &nbsp;
                 <div class="btn-group">
                   <button class="btn">เลือกรถตู้</button>
                   <button class="btn dropdown-toggle" data-toggle="dropdown">
@@ -130,6 +133,7 @@ if ($_SESSION["user_id"] != null){
                     <li><a href="#">คันที่4</a></li>
                 </ul>
             </div>
+
             </div>
 
                 <!-- /.row -->
@@ -146,10 +150,7 @@ if ($_SESSION["user_id"] != null){
                             </div>
                             <div class="timeline-event timeline-event-success">
                                 <div class="timeline-heading">
-                                    <h4>ชื่อภาระกิจ</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p>รายละเอียดภาระกิจ</p>
+                                    <h4>ภาระกิจ</h4>
                                 </div>
                                 <div class="timeline-footer primary">
                                     <p class="text-right">29.03.2559 ถึง 03.04.2559</p>
@@ -163,10 +164,7 @@ if ($_SESSION["user_id"] != null){
                             </div>
                             <div class="timeline-event timeline-event-success">
                                 <div class="timeline-heading">
-                                    <h4>ชื่อภาระกิจ</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p>รายละเอียดภาระกิจ</p>
+                                    <h4>ภาระกิจ</h4>
                                 </div>
                                 <div class="timeline-footer primary">
                                     <p class="text-right">29.03.2559 ถึง 03.04.2559</p>
@@ -180,10 +178,7 @@ if ($_SESSION["user_id"] != null){
                             </div>
                             <div class="timeline-event timeline-event-success">
                                 <div class="timeline-heading">
-                                    <h4>ชื่อภาระกิจ</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p>รายละเอียดภาระกิจ</p>
+                                    <h4>ภาระกิจ</h4>
                                 </div>
                                 <div class="timeline-footer primary">
                                     <p class="text-right">29.03.2559 ถึง 03.04.2559</p>
@@ -197,10 +192,7 @@ if ($_SESSION["user_id"] != null){
                             </div>
                             <div class="timeline-event timeline-event-success">
                                 <div class="timeline-heading">
-                                    <h4>ชื่อภาระกิจ</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p>รายละเอียดภาระกิจ</p>
+                                    <h4>ภาระกิจ</h4>
                                 </div>
                                 <div class="timeline-footer primary">
                                     <p class="text-right">29.03.2559 ถึง 03.04.2559</p>
@@ -214,10 +206,7 @@ if ($_SESSION["user_id"] != null){
                             </div>
                             <div class="timeline-event timeline-event-success">
                                 <div class="timeline-heading">
-                                    <h4>ชื่อภาระกิจ</h4>
-                                </div>
-                                <div class="timeline-body">
-                                    <p>รายละเอียดภาระกิจ</p>
+                                    <h4>ภาระกิจ</h4>
                                 </div>
                                 <div class="timeline-footer primary">
                                     <p class="text-right">29.03.2559 ถึง 03.04.2559</p>
@@ -227,7 +216,9 @@ if ($_SESSION["user_id"] != null){
                     </div>
                 </div>
             </div>
-
+                <br>
+                <br>
+                <br>
             </nav>
                    
         </div>
