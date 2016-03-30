@@ -7,6 +7,10 @@ error_reporting(0);
 if ($_SESSION["user_id"] != null){
 ?>
 
+<?php
+include 'connectDB.php';
+?>
+
 <head>
 
     <meta charset="utf-8">
@@ -81,27 +85,60 @@ if ($_SESSION["user_id"] != null){
         </nav>
     </div>
 
+<?php
+
+
+if(isset($_POST['submit'])){
+
+$vannumber = $_POST['vannumber'];
+$info = $_POST['info'];
+$datedepart = $_POST['datedepart'];
+$datearrival = $_POST['datearrival'];
+
+ $sql_query = "INSERT INTO addata (vannumber,info,datedepart,datearrival)
+        VALUES ('$vannumber','$info','$datedepart','$datearrival')";
+
+ mysqli_query($mysqli,$sql_query);
+
+ header( "location:home.php" );
+
+
+
+}
+
+
+
+
+?>
+
+
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
                 <h3 class="page-header alert btn-info"><i class="fa fa-list-alt fa-fw"></i>&nbsp; แบบฟอร์มการขอใช้รถตู้</h3>
             </div>
 
+
+
             <div class="col-lg-9">
-                <form role="form" action="#" method="post" name="booking">
+                <form role="form"  method="post"    >
                     <div class="form-group form-group-lg">
                       <h3 for="disabledSelect">ต้องการขอใช้รถตู้คันที่</h3>
-                      <select id="disabledSelect" class="form-control input-lg">
-                        <option>คันที่ 1</option>
-                        <option>คันที่ 2</option>
-                        <option>คันที่ 3</option>
-                        <option>คันที่ 4</option>
+                      <select  name="vannumber" class="form-control input-lg" required>
+                        <?php
+                            $res = $mysqli->query("SELECT * FROM vandetail");
+                            while ($row = $res->fetch_assoc()):
+                            ?>
+                        <option value="<?php echo $row['license'] ?>"><?php echo $row['license'] ?></option>
+                        <?php
+                            endwhile;
+                        ?>
                     </select>
                     </div>
 
                     <div class="form-group form-group-lg">
                          <h3 for="disabledTextInput">ภาระกิจ</h3>
-                        <textarea class="form-control" id="disabledTextInput" rows="5" placeholder="กรอกภาระกิจ"></textarea>
+                        <textarea class="form-control" id="info" name="info" rows="5" placeholder="กรอกภาระกิจ" required></textarea>
                     </div>
 
                     <h3 class="control-label" for="date">วันและเวลาออกเดินทาง</h3>
@@ -110,7 +147,7 @@ if ($_SESSION["user_id"] != null){
                             <i class="fa fa-calendar">
                             </i>
                         </div>
-                        <input  class="form-control" id="date" name="date" type="datetime-local"/>
+                        <input  class="form-control" id="datedepart" name="datedepart" type="datetime-local" required>
                     </div>
 
                     <h3 class="control-label" for="date">วันและเวลาเดินกลับ</h3>
@@ -119,12 +156,12 @@ if ($_SESSION["user_id"] != null){
                             <i class="fa fa-calendar">
                             </i>
                         </div>
-                        <input class="form-control" id="date" name="date" type="datetime-local"/>
+                        <input class="form-control" id="datearrival" name="datearrival" type="datetime-local" required>
                     </div>
                    <br>
 
                    <div align="center">
-                    <button type="submit" class="btn btn-info btn-lg">ยืนยัน</button>
+                    <button type="submit" name="submit" class="btn btn-info btn-lg">ยืนยัน</button>
                    </div>
                 </form>
                    <br>
