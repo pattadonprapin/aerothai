@@ -129,7 +129,7 @@ if ($_SESSION["user_id"] != null){
                 <div align="right" >
                 <div class="btn-group">
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                <select name="selectVan" onchange="this.form.submit();" >
+                <select name="selectVan" onchange="this.form.submit();" class="form-control input-lg">
                     <option value="">ลำดับรถตู้</option>
                     <option value="1">คันที่1</option>
                     <option value="2">คันที่2</option>
@@ -171,16 +171,21 @@ if ($_SESSION["user_id"] != null){
                                     </script>
                                     <?php
                                 } else {
+
                                     echo
                                     "
                                         <div class=\"timeline-event timeline-event-success\">
                                         <div class=\"timeline-heading\">
-                                        <h4>{$row['task']}</h4>
+                                      
+                                        <h4> ภารกิจ  :    {$row['task']}</h4>
                                          </div>
                                         <div class=\"timeline-footer primary\">
-                                            <p class=\"text-right\">{$row['go']}</p>
+                                            <p class=\"text-right\">วันและเวลาออกเดินทาง :{$row['go']}</p>
+                                            <p class=\"text-right\">วันและเวลาเดินกลับ :{$row['back']}</p>
                                         </div>
-                                        </div>";
+                                        </div>
+                                        ";
+
                                 }
                             }
                         }

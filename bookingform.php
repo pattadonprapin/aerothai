@@ -96,15 +96,19 @@ include 'connectDB.php';
 
 if(isset($_POST['submit'])){
 
-$vannumber = $_POST['vannumber'];
-$info = $_POST['info'];
-$datedepart = $_POST['datedepart'];
-$datearrival = $_POST['datearrival'];
 
- $sql_query = "INSERT INTO addata (vannumber,info,datedepart,datearrival)
-        VALUES ('$vannumber','$info','$datedepart','$datearrival')";
+$id = $_POST['id'];
+$task = $_POST['task'];
+$go = $_POST['go'];
+$back = $_POST['back'];
+$status = "1";
+
+ $sql_query = "INSERT INTO timeline (task,go,back,status,van_id)
+        VALUES ('$task','$go','$back','$status','$id')";
 
  mysqli_query($mysqli,$sql_query);
+
+
 
  header( "location:home.php" );
 
@@ -130,12 +134,13 @@ $datearrival = $_POST['datearrival'];
                 <form role="form"  method="post"    >
                     <div class="form-group form-group-lg">
                       <h3 for="disabledSelect">ต้องการขอใช้รถตู้คันที่</h3>
-                      <select  name="vannumber" class="form-control input-lg" required>
+                      <select  name="id" class="form-control input-lg" required>
+                        <option value="">---</option>
                         <?php
                             $res = $mysqli->query("SELECT * FROM vandetail");
                             while ($row = $res->fetch_assoc()):
                             ?>
-                        <option value="<?php echo $row['license'] ?>"><?php echo $row['license'] ?></option>
+                        <option value="<?php echo $row['id'] ?>"><?php echo $row['id'] ?></option>
                         <?php
                             endwhile;
                         ?>
@@ -144,7 +149,7 @@ $datearrival = $_POST['datearrival'];
 
                     <div class="form-group form-group-lg">
                          <h3 for="disabledTextInput">ภาระกิจ</h3>
-                        <textarea class="form-control" id="info" name="info" rows="5" placeholder="กรอกภาระกิจ" required></textarea>
+                        <textarea class="form-control" id="task" name="task" rows="5" placeholder="กรอกภาระกิจ" required></textarea>
                     </div>
 
                     <h3 class="control-label" for="date">วันและเวลาออกเดินทาง</h3>
@@ -153,7 +158,7 @@ $datearrival = $_POST['datearrival'];
                             <i class="fa fa-calendar">
                             </i>
                         </div>
-                        <input  class="form-control" id="datedepart" name="datedepart" type="datetime-local" required>
+                        <input  class="form-control" id="go" name="go" type="datetime-local" required>
                     </div>
 
                     <h3 class="control-label" for="date">วันและเวลาเดินกลับ</h3>
@@ -162,7 +167,7 @@ $datearrival = $_POST['datearrival'];
                             <i class="fa fa-calendar">
                             </i>
                         </div>
-                        <input class="form-control" id="datearrival" name="datearrival" type="datetime-local" required>
+                        <input class="form-control" id="back" name="back" type="datetime-local" required>
                     </div>
                    <br>
 
