@@ -51,7 +51,15 @@ if ($_SESSION["user_id"] != null){
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">
+                <?php
+                error_reporting(0);
+                if ($_SESSION["user_id"] != null){
+                  echo '<a class="navbar-brand" href="home.php">';}
+                ?>
+                <?php
+                 if  ($_SESSION["user_id"] == null){
+                   echo '<a class="navbar-brand" href="index.php">';}
+                  ?>
                     <img src = "image/band.png" width="250" height="50" >
                 </a>
             </div>
@@ -78,10 +86,6 @@ if ($_SESSION["user_id"] != null){
                     <ul class="nav" id="side-menu">
                       <li>
                             <a href="viewcalendar.php"><i class="fa fa-calendar-o fa-lg"></i><font color="#798481" size="4">&nbsp; ข้อมูลแบบปฏิทิน</a></font>
-                        </li>
-                        <br>
-                        <li>
-                            <a href="viewtable.php"><i class="fa fa-table fa-lg"></i><font color="#798481" size="4"> &nbsp; ข้อมูลแบบตาราง</a></font>
                         </li>
                         <br>
                         <li>
@@ -118,9 +122,12 @@ if ($_SESSION["user_id"] != null){
                     <!-- /.col-lg-12 -->
                 </div>
 
-                 <div align="right" >
-                    <a href="bookingform.php"><button class="btn btn-info btn-lg"><i class="fa fa-heart fa-fw"></i>&nbsp;ขอใช้รถตู้</button></a>
+                 <div align="light" >
+                    <a href="bookingform.php"><button class="btn btn-success btn-lg"><i class="fa fa-heart fa-fw"></i>&nbsp;ขอใช้รถตู้</button></a>
+                </div>
                 &nbsp;
+                <div align="right" >
+                <div class="btn-group">
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                 <select name="selectVan" onchange="this.form.submit();" >
                     <option value="">ลำดับรถตู้</option>
@@ -130,6 +137,7 @@ if ($_SESSION["user_id"] != null){
                     <option value="4">คันที่4</option>
                 </select>
                 </form>
+                </div>
                 </div>
 
                 <!-- /.row -->
@@ -165,9 +173,6 @@ if ($_SESSION["user_id"] != null){
                                 } else {
                                     echo
                                     "
-                                        <div class=\"timeline-point timeline-point-info\">
-                                        <i class=\"fa fa-bus\"></i>
-                                         </div>
                                         <div class=\"timeline-event timeline-event-success\">
                                         <div class=\"timeline-heading\">
                                         <h4>{$row['task']}</h4>

@@ -55,14 +55,20 @@ include 'connectDB.php';
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">
-                    <img src = "image/band.png" width="250" height="50" >
-                </a>
+                <?php
+                error_reporting(0);
+                if ($_SESSION["user_id"] != null){
+                  echo '<a class="navbar-brand" href="home.php">';}
+                ?>
+                <?php
+                 if  ($_SESSION["user_id"] == null){
+                   echo '<a class="navbar-brand" href="index.php">';}
+                  ?>
+                    <img src = "image/band.png" width="250" height="50" >                    
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <ul class="nav navbar-top-links navbar-center">
-
-
+                
                 </ul>
                 <br>
 

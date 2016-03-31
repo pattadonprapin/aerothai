@@ -47,9 +47,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php">
+                <?php
+                error_reporting(0);
+                if ($_SESSION["user_id"] != null){
+                  echo '<a class="navbar-brand" href="home.php">';}
+                ?>
+                <?php
+                 if  ($_SESSION["user_id"] == null){
+                   echo '<a class="navbar-brand" href="index.php">';}
+                  ?>
                     <img src = "image/band.png" width="250" height="50" >
-                </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <ul class="nav navbar-top-links navbar-center">
@@ -74,10 +81,6 @@
                     <ul class="nav" id="side-menu">
                       <li>
                             <a href="viewcalendar.php"><i class="fa fa-calendar-o fa-lg"></i><font color="#798481" size="4">&nbsp; ข้อมูลแบบปฏิทิน</a></font>
-                        </li>
-                        <br>
-                        <li>
-                            <a href="viewtable.php"><i class="fa fa-table fa-lg"></i><font color="#798481" size="4"> &nbsp; ข้อมูลแบบตาราง</a></font>
                         </li>
                         <br>
                         <li>
@@ -154,8 +157,7 @@
                                     <i class="fa fa-bus fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">ว่าง</div>
-                                    <div>กก-1111</div>
+                                    <div class="huge">กก-1111</div>
                                 </div>
                             </div>
                         </div>
@@ -176,8 +178,7 @@
                                     <i class="fa fa-bus fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">ว่าง</div>
-                                    <div>ขข-2222</div>
+                                    <div class="huge">ขข-2222</div>
                                 </div>
                             </div>
                         </div>
@@ -198,8 +199,7 @@
                                     <i class="fa fa-bus fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">ว่าง</div>
-                                    <div>คค-3333</div>
+                                    <div class="huge">คค-3333</div>
                                 </div>
                             </div>
                         </div>
@@ -220,8 +220,7 @@
                                     <i class="fa fa-bus fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">ไม่ว่าง</div>
-                                    <div>งง-4444</div>
+                                    <div class="huge">งง-4444</div>
                                 </div>
                             </div>
                         </div>
