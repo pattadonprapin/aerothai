@@ -35,6 +35,11 @@ if ($_SESSION["user_id"] != null){
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <?php
+    include 'connectDB.php';
+    $result = $mysqli->query("SELECT * FROM `request`");
+    ?>
+    <meta http-equiv="refresh" content="5" />
 </head>
 
 <body>
@@ -90,7 +95,7 @@ if ($_SESSION["user_id"] != null){
                         </li>
                         <br>
                         <li>
-                            <a href="index.php"><i class="fa fa-arrow-circle-left fa-lg"></i><font color="#798481" size="4"> &nbsp; กลับสู่หน้าหลัก</a></font>
+                            <a href="home.php"><i class="fa fa-arrow-circle-left fa-lg"></i><font color="#798481" size="4"> &nbsp; กลับ</a></font>
                         </li>
                         <li class="btn-danger divider" style="height:3px;"></li>
                                <br>
@@ -118,6 +123,45 @@ if ($_SESSION["user_id"] != null){
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
+            &nbsp;
+            <div class="col-lg-12">
+                <table class="table table-bordered">
+                    <thead class="thead-default">
+                    <tr>
+                        <div class="col-lg-1"><th>ลำดับที่</th></div>
+                        <div class="col-lg-3"><th>ชื่อผู้ขอใช้งาน</th></div>
+                        <div class="col-lg-2"><th>เวลาไป</th></div>
+                        <div class="col-lg-2"><th>เวลากลับ</th></div>
+                        <div class="col-lg-4"><th>ภารกิจ</th></div>
+                        <div class="col-lg-4"><th>รถตู้คันที่</th></div>
+                        <div class="col-lg-4"><th>สถานะ</th></div>
+                        <div class="col-lg-4"><th></th></div>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    $no =1;
+                    while ( $row = $result->fetch_assoc()) {
+                        echo
+                        "<tr>
+                    <th>{$no}</th>
+                    <th>{$row['name']}</th>
+                    <th>{$row['go']}</th>
+                    <th>{$row['back']}</th>
+                    <th>{$row['task']}</th>
+                    <th>{$row['vanNum']}</th>
+                    <th>{$row['status']}</th>
+                    <th><a class=\"btn btn-primary\" href=\"accept.php?id={$row['id']}\">แก้ไข</a></th>
+                    </tr>\n";
+                        $no += 1;
+                    }
+                    ?>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- /.row -->
+
             <!-- /.row -->
     </div>
 

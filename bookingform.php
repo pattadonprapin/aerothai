@@ -4,10 +4,9 @@
 session_start();
 
 error_reporting(0);
-if ($_SESSION["user_id"] != null){
-?>
 
-<?php
+
+
 include 'connectDB.php';
 ?>
 
@@ -48,29 +47,36 @@ include 'connectDB.php';
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
             <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <?php
-                error_reporting(0);
-                if ($_SESSION["user_id"] != null){
-                  echo '<a class="navbar-brand" href="home.php">';}
-                ?>
-                <?php
-                 if  ($_SESSION["user_id"] == null){
-                   echo '<a class="navbar-brand" href="index.php">';}
-                  ?>
-                    <img src = "image/band.png" width="250" height="50" >                    
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <ul class="nav navbar-top-links navbar-center">
-                
-                </ul>
-                <br>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <?php
+            error_reporting(0);
+            if ($_SESSION["user_id"] != null){
+                echo '<a class="navbar-brand" href="home.php">';}
+            ?>
+            <?php
+            if  ($_SESSION["user_id"] == null){
+                echo '<a class="navbar-brand" href="index.php">';}
+            ?>
+            <img src = "image/band.png" width="250" height="50" >
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <ul class="nav navbar-top-links navbar-center">
+            <li>
+                <a class="hidden" href="bookinglist.php"><i class="fa fa-list-alt fa-lg"></i><font color="#798481" size="4">&nbsp; รายการจองรถตู้</a></font>
+            </li>
+            <li>
+                <a class="hidden" href="vandetail.php"><i class="fa fa-bus fa-lg"></i><font color="#798481" size="4">&nbsp; ข้อมูลรถตู้</a></font>
+            </li>
+            <li>
+                <a class="hidden" href="vanprocess.php"><i class="fa fa-bars fa-lg"></i><font color="#798481" size="4">&nbsp; ขั้นตอนการจองรถตู้</a></font>
+            </li>
+        </ul>
 
             <!-- /.navbar-collapse -->
         <!-- /.container -->
@@ -97,14 +103,14 @@ include 'connectDB.php';
 if(isset($_POST['submit'])){
 
 
-$id = $_POST['id'];
-$task = $_POST['task'];
+$name = $_POST['name'];
 $go = $_POST['go'];
 $back = $_POST['back'];
-$status = "1";
+$task = $_POST['task'];
+$status = "Waiting";
 
- $sql_query = "INSERT INTO timeline (task,go,back,status,van_id)
-        VALUES ('$task','$go','$back','$status','$id')";
+ $sql_query = "INSERT INTO request (name,go,back,task,status)
+        VALUES ('$name','$go','$back','$task','$status')";
 
  mysqli_query($mysqli,$sql_query);
 
@@ -131,29 +137,17 @@ $status = "1";
 
 
             <div class="col-lg-9">
-                <form role="form"  method="post"    >
-                    <div class="form-group form-group-lg">
-                      <h3 for="disabledSelect">ต้องการขอใช้รถตู้คันที่</h3>
-                      <select  name="id" class="form-control input-lg" required>
-                        <option value="">---</option>
-                        <?php
-                            $res = $mysqli->query("SELECT * FROM vandetail");
-                            while ($row = $res->fetch_assoc()):
-                            ?>
-                        <option value="<?php echo $row['id'] ?>"><?php echo $row['id'] ?></option>
-                        <?php
-                            endwhile;
-                        ?>
-                    </select>
-                    </div>
-
+                <form role="form"  method="post">
+                    <h3 for="disabledTextInput">ชื่อผู้ขอใช้งาน</h3>
+                    <input type="text" name="username" maxlength="10" placeholder="ไม่ได้ระบุ" class="form-control"
+                           value="<?php echo "$row[name]"?>" required />
                     <div class="form-group form-group-lg">
                          <h3 for="disabledTextInput">ภาระกิจ</h3>
                         <textarea class="form-control" id="task" name="task" rows="5" placeholder="กรอกภาระกิจ" required></textarea>
                     </div>
 
                     <h3 class="control-label" for="date">วันและเวลาออกเดินทาง</h3>
-                    <div class="input-group form-group-lg">
+                    <div class="input-group form-group-lg" id="datetimepicker2">
                         <div class="input-group-addon">
                             <i class="fa fa-calendar">
                             </i>
@@ -201,7 +195,4 @@ $status = "1";
 </body>
 
 </html>
-<?php
-}else {
-    header("Location:index.php");
-}?>
+

@@ -35,7 +35,12 @@ if ($_SESSION["user_id"] != null){
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <?php
+    include 'connectDB.php';
+    $status = "Waiting";
+    $result = $mysqli->query("SELECT * FROM `request` WHERE  status ='$status'");
+    ?>
+    <meta http-equiv="refresh" content="5" />
 </head>
 
 <body>
@@ -73,7 +78,7 @@ if ($_SESSION["user_id"] != null){
                         <a class="page-scroll" href="vandetail.php"><i class="fa fa-bus fa-lg"></i><font color="#798481" size="4">&nbsp; ข้อมูลรถตู้</a></font>
                     </li>
                     <li>
-                        <a class="page-scroll" href="vanprocess.php"><i class="fa fa-bars fa-lg"></i><font color="#798481" size="4">&nbsp; ขั้นตอนการจองรถตู้</a></font>
+                        <a class="page-scroll" href="vanprocess.php"><i class="glyphicon glyphicon-cloud-download"></i><font color="#798481" size="4">&nbsp; ดาวโหลดเอกสาร</a></font>
                     </li>
                 </ul>
 
@@ -91,10 +96,8 @@ if ($_SESSION["user_id"] != null){
                         <li>
                             <a href="statsvan.php"><i class="fa fa-bar-chart fa-lg"></i><font color="#798481" size="4"> &nbsp; สถิติการใช้รถยนต์</a></font>
                         </li>
-                        <br>
-                        <li>
-                            <a href="index.php"><i class="fa fa-arrow-circle-left fa-lg"></i><font color="#798481" size="4"> &nbsp; กลับสู่หน้าหลัก</a></font>
-                        </li>
+
+
                          <li class="btn-danger divider" style="height:3px;"></li>
                                 <br>
                                 <li>
@@ -117,81 +120,46 @@ if ($_SESSION["user_id"] != null){
           <div id="page-wrapper">
                 <div class="row">
                     <div class="col-lg-12">
-                     <h3 class="page-header alert btn-info"><i class="fa fa-comment fa-fw"></i>&nbsp; สถานะรถตู้</h3>
+                     <h3 class="page-header alert btn-info"><i class="fa fa-comment fa-fw"></i>&nbsp; คำขอใช้งานรถตู้<h3>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
 
-                 <div align="light" >
-                    <a href="bookingform.php"><button class="btn btn-success btn-lg"><i class="fa fa-heart fa-fw"></i>&nbsp;ขอใช้รถตู้</button></a>
-                </div>
                 &nbsp;
-                <div align="right" >
-                <div class="btn-group">
-                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                <select name="selectVan" onchange="this.form.submit();" class="form-control input-lg">
-                    <option value="">ลำดับรถตู้</option>
-                    <option value="1">คันที่1</option>
-                    <option value="2">คันที่2</option>
-                    <option value="3">คันที่3</option>
-                    <option value="4">คันที่4</option>
-                </select>
-                </form>
-                </div>
-                </div>
+              <div class="col-lg-12">
+                  <table class="table table-bordered">
+                      <thead class="thead-default">
+                      <tr>
+                          <div class="col-lg-1"><th>ลำดับที่</th></div>
+                          <div class="col-lg-3"><th>ชื่อผู้ขอใช้งาน</th></div>
+                          <div class="col-lg-2"><th>เวลาไป</th></div>
+                          <div class="col-lg-2"><th>เวลากลับ</th></div>
+                          <div class="col-lg-4"><th>ภารกิจ</th></div>
+                          <div class="col-lg-4"><th>สถานะ</th></div>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <?php
+                      $no =1;
+                      while ( $row = $result->fetch_assoc()) {
+                          echo
+                          "<tr>
+                    <th>{$no}</th>
+                    <th>{$row['name']}</th>
+                    <th>{$row['go']}</th>
+                    <th>{$row['back']}</th>
+                    <th>{$row['task']}</th>
+                    <th><a class=\"btn btn-primary\" href=\"accept.php?id={$row['id']}\">แก้ไข</a></th>
+                    </tr>\n";
+                          $no +=1;
+                      }
+                      ?>
+                      </tbody>
+                  </table>
+              </div>
 
                 <!-- /.row -->
-                 <div class="row">
-                    <div class="timeline timeline-single-column">
 
-                        <span class="timeline-label">
-                            <span class="label label-info">
-                                <?php
-                                echo date("d/m/Y") ;
-                                ?>
-
-                            </span>
-                        </span>
-                        <div class="timeline-item">
-
-                        <?php
-                        include 'connectDB.php';
-
-                        if(isset($_POST['selectVan'])) {
-
-                            $van_id = $_POST['selectVan'];
-                            $status = 1;
-                            $result = $mysqli->query("SELECT * FROM `timeline` WHERE van_id = '" . $van_id . "' AND status = '" . $status . "'");
-                            while ($row = $result->fetch_assoc()) {
-                                if ($row == 0) {
-                                    ?>
-                                    <script type="text/javascript">
-                                        alert("รถตู้คันนี้ไม่มีภาระกิจ !!!!");
-
-                                    </script>
-                                    <?php
-                                } else {
-
-                                    echo
-                                    "
-                                        <div class=\"timeline-event timeline-event-success\">
-                                        <div class=\"timeline-heading\">
-                                      
-                                        <h4> ภารกิจ  :    {$row['task']}</h4>
-                                         </div>
-                                        <div class=\"timeline-footer primary\">
-                                            <p class=\"text-right\">วันและเวลาออกเดินทาง :{$row['go']}</p>
-                                            <p class=\"text-right\">วันและเวลาเดินกลับ :{$row['back']}</p>
-                                        </div>
-                                        </div>
-                                        ";
-
-                                }
-                            }
-                        }
-                        ?>
-                        </div>
-                </div>
             </div>
                 <br>
                 <br>
