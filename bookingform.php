@@ -103,7 +103,7 @@ include 'connectDB.php';
 if(isset($_POST['submit'])){
 
 
-$name = $_POST['name'];
+$name = $_POST['username'];
 $go = $_POST['go'];
 $back = $_POST['back'];
 $task = $_POST['task'];
@@ -139,7 +139,7 @@ $status = "Waiting";
             <div class="col-lg-9">
                 <form role="form"  method="post">
                     <h3 for="disabledTextInput">ชื่อผู้ขอใช้งาน</h3>
-                    <input type="text" name="username" maxlength="10" placeholder="ไม่ได้ระบุ" class="form-control"
+                    <input type="text" name="username" maxlength="40" placeholder="ไม่ได้ระบุ" class="form-control"
                            value="<?php echo "$row[name]"?>" required />
                     <div class="form-group form-group-lg">
                          <h3 for="disabledTextInput">ภาระกิจ</h3>

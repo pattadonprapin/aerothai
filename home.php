@@ -132,8 +132,8 @@ if ($_SESSION["user_id"] != null){
                       <tr>
                           <div class="col-lg-1"><th>ลำดับที่</th></div>
                           <div class="col-lg-3"><th>ชื่อผู้ขอใช้งาน</th></div>
-                          <div class="col-lg-2"><th>เวลาไป</th></div>
-                          <div class="col-lg-2"><th>เวลากลับ</th></div>
+                          <div class="col-lg-1"><th>เวลาไป</th></div>
+                          <div class="col-lg-1"><th>เวลากลับ</th></div>
                           <div class="col-lg-4"><th>ภารกิจ</th></div>
                           <div class="col-lg-4"><th>สถานะ</th></div>
                       </tr>

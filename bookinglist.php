@@ -37,7 +37,8 @@ if ($_SESSION["user_id"] != null){
 
     <?php
     include 'connectDB.php';
-    $result = $mysqli->query("SELECT * FROM `request`");
+    $status = "Waiting";
+    $result = $mysqli->query("SELECT * FROM `request` WHERE status = '$status'");
     ?>
     <meta http-equiv="refresh" content="5" />
 </head>

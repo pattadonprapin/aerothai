@@ -1,11 +1,6 @@
-
-<?php
-session_start();
-
-error_reporting(0);
-if ($_SESSION["user_id"] != null){
-?>
+<!DOCTYPE html>
 <html lang="en">
+
 
 <head>
 
@@ -24,7 +19,6 @@ if ($_SESSION["user_id"] != null){
     <link href="css/logo-nav.css" rel="stylesheet">
     <link href="css/sb-admin-2.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <link href="css/timeline.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -35,15 +29,14 @@ if ($_SESSION["user_id"] != null){
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
     <?php
     include 'connectDB.php';
-    $id = $_GET["id"];
-    $result = $mysqli->query("SELECT * FROM `request` WHERE  id='$id'");
-    $row = $result->fetch_assoc();
-
-    $result2 = $mysqli->query("SELECT * FROM `vandetail`");
-
+    $vanId = $_GET['id'];
+    $status = "Accepted";
+    $result = $mysqli->query("SELECT * FROM `request` WHERE vanNum = '$vanId' ");
     ?>
+    <meta http-equiv="refresh" content="5" />
 </head>
 
 <body>
@@ -59,17 +52,8 @@ if ($_SESSION["user_id"] != null){
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <?php
-            error_reporting(0);
-            if ($_SESSION["user_id"] != null){
-                echo '<a class="navbar-brand" href="home.php">';}
-            ?>
-            <?php
-            if  ($_SESSION["user_id"] == null){
-                echo '<a class="navbar-brand" href="index.php">';}
-            ?>
+
             <img src = "image/band.png" width="250" height="50" >
-            </a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <ul class="nav navbar-top-links navbar-center">
@@ -84,7 +68,6 @@ if ($_SESSION["user_id"] != null){
                 <a class="page-scroll" href="vanprocess.php"><i class="fa fa-bars fa-lg"></i><font color="#798481" size="4">&nbsp; ขั้นตอนการจองรถตู้</a></font>
             </li>
         </ul>
-
 
         <!-- /.navbar-collapse -->
         <!-- /.container -->
@@ -101,18 +84,11 @@ if ($_SESSION["user_id"] != null){
                     </li>
                     <br>
                     <li>
-                        <a href="bookinglist.php"><i class="fa fa-arrow-circle-left fa-lg"></i><font color="#798481" size="4"> &nbsp; กลับ</a></font>
+                        <a href="home.php"><i class="fa fa-arrow-circle-left fa-lg"></i><font color="#798481" size="4"> &nbsp; กลับ</a></font>
                     </li>
                     <li class="btn-danger divider" style="height:3px;"></li>
                     <br>
-                    <li>
-                        <font color="#798481" size="4"> &nbsp; ยินดีต้อนรับ:</a></font>
-                        <?php  echo $_SESSION["user_name"];?>
 
-                        <br>
-                        <a href="logout.php"><button class="btn btn-danger"><i class="fa fa-sign-out fa-fw"></i>ออกจากระบบ</button></a>
-                    </li>
-                    <li class="btn-danger divider" style="height:3px;"></li>
 
                 </ul>
             </div>
@@ -125,53 +101,57 @@ if ($_SESSION["user_id"] != null){
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h3 class="page-header alert btn-info"><i class="fa fa-comment fa-fw"></i>&nbsp; ยืนยันการขอใช้รถตู้<h3>
+            <h3 class="page-header alert btn-info"><i class="fa fa-list-alt fa-fw"></i>&nbsp; รถตู้คันที่ <?php echo "$vanId"?></h3>
         </div>
         <!-- /.col-lg-12 -->
     </div>
-
     &nbsp;
     <div class="col-lg-12">
-        <form role="form" method="get" action="accept-btn.php">
-            <div class="form-group form-group-lg">
-                <input type="hidden" name="id" value="<?php echo "$row[id]";?>">
-                <h3 for="disabledTextInput">ชื่อผู้ขอใช้งาน</h3>
-                <input type="text" name="username" maxlength="20" placeholder="ไม่ได้ระบุ" class="form-control"
-                       value="<?php echo "$row[name]"?>"/>
-                <h3 for="disabledTextInput">เวลาไป</h3>
-                <input type="text" name="go" maxlength="20" placeholder="ไม่ได้ระบุ" class="form-control"
-                       value="<?php echo "$row[go]"?>"/>
-                <h3 for="disabledTextInput">เวลากลับ</h3>
-                <input type="text" name="back" maxlength="20" placeholder="ไม่ได้ระบุ" class="form-control"
-                       value="<?php echo "$row[back]"?>"/>
-                <h3 for="disabledTextInput">ภารกิจ</h3>
-                <input type="text" name="task" maxlength="20" placeholder="ไม่ได้ระบุ" class="form-control"
-                       value="<?php echo "$row[task]"?>"/>
-                <h3 for="disabledTextInput">รถตู้คันที่</h3>
-                <select name="van" class="form-control input-lg">
-                    <option disabled="disabled" selected="selected">เลือก</option>
-                    <?php
-                    while ( $row2 = $result2->fetch_assoc()) {
-                        echo "
-                    <option value=$row2[number]>$row2[number]</option>
-                    ";
-                    }
-                    ?>
-                </select>
-                <br><br>
-                <button type="submit" class="btn btn-success" name="accept-btn">อนุมัติ</button>
-                <button type="submit" class="btn btn-danger" name="reject-btn">ไม่อนุมัติ</button>
-            </div>
+        <table class="table table-bordered">
+            <thead class="thead-default">
+            <tr>
+                <div class="col-lg-1"><th>ลำดับที่</th></div>
+                <div class="col-lg-3"><th>ชื่อผู้ขอใช้งาน</th></div>
+                <div class="col-lg-2"><th>เวลาไป</th></div>
+                <div class="col-lg-2"><th>เวลากลับ</th></div>
+                <div class="col-lg-4"><th>ภารกิจ</th></div>
+                <div class="col-lg-4"><th>สำเร็จภารกิจ</th></div>
 
-        </form>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+            $no =1;
+            while ( $row = $result->fetch_assoc()) {
+                echo
+                "<tr>
+                    <th>{$no}</th>
+                    <th>{$row['name']}</th>
+                    <th>{$row['go']}</th>
+                    <th>{$row['back']}</th>
+                    <th>{$row['task']}</th>
+                    <th><a class=\"btn btn-primary\" href=\"finish-btn.php?id=
+                    {$row['id']}?task={$row['task']}\">ยืนยัน</a></th>
+                  
+                  
+                    
+                    </tr>";
+                $no += 1;
+            }
+            ?>
+            </tbody>
+        </table>
     </div>
 
     <!-- /.row -->
 
+    <!-- /.row -->
 </div>
-<br>
-<br>
-<br>
+
+<!-- /#wrapper -->
+</nav>
 
 <!-- jQuery -->
 <script src="js/jquery.js"></script>
@@ -182,7 +162,3 @@ if ($_SESSION["user_id"] != null){
 </body>
 
 </html>
-<?php
-}else {
-    header("Location:index.php");
-}?>
