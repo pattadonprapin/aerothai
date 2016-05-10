@@ -159,7 +159,7 @@ if ($_SESSION["user_id"] != null){
                     ?>
                 </select>
                 <br><br>
-                <button type="submit" class="btn btn-success" name="accept-btn">อนุมัติ</button>
+                <button type="submit" class="btn btn-success" name="accept-btn" onclick="myFunction()">อนุมัติ</button>
                 <button type="submit" class="btn btn-danger" name="reject-btn">ไม่อนุมัติ</button>
             </div>
 
@@ -178,6 +178,16 @@ if ($_SESSION["user_id"] != null){
 
 <!-- Bootstrap Core JavaScript -->
 <script src="js/bootstrap.min.js"></script>
+<script>
+    function myFunction() {
+        alert("คุณได้ทำการอนุมัติเรียบร้อยแล้ว");
+    }
+</script>
+<script>
+    function myFunction2() {
+        alert("คุณได้ปฏิเสธคำขอร้องนี้แล้ว");
+    }
+</script>
 
 </body>
 

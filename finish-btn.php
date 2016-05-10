@@ -1,13 +1,17 @@
 <?php
 include 'connectDB.php';
 
+    function al($msg){
+        echo "<script type=\"text/javascript\">alert('$msg') </script>";
+    }
+    al("คุณได้ยืนยันภาระกิจแล้ว");
+$id = $_GET['id'];
 
-    $id = $_GET['id'];
-
-    $result = $mysqli->query("SELECT vanNum,task FROM `request` WHERE id='$id'");
+    $result = $mysqli->query("SELECT * FROM `request` WHERE id='$id'");
     $row = $result->fetch_assoc();
+
     $mysqli->query("INSERT INTO `report` SET vanNum = '{$row['vanNum']}', task = '{$row['task']}'");
-    echo "คุณได้อนุมัติการใช้รถตู้แล้ว";
+
 
 header("location:home.php");
 

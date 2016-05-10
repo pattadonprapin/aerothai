@@ -81,6 +81,9 @@
                         <li>
                             <a href="bookingform.php"><i class="fa fa-bus fa-lg"></i><font color="#798481" size="4">&nbsp; ยื่นคำขอใช้งานรถตู้</a></font>
                         </li>
+                        <li>
+                            <a href="checkRequest.php"><i class="fa fa-list-alt fa-lg"></i><font color="#798481" size="4">&nbsp; เช็คสถานะการขอใช้งาน</a></font>
+                        </li>
                          <li class="btn-danger divider" style="height:3px;"></li>
                          <?php
 

@@ -108,9 +108,10 @@ $go = $_POST['go'];
 $back = $_POST['back'];
 $task = $_POST['task'];
 $status = "Waiting";
+$vanNum = "ยังไม่มีรถว่าง";
 
- $sql_query = "INSERT INTO request (name,go,back,task,status)
-        VALUES ('$name','$go','$back','$task','$status')";
+ $sql_query = "INSERT INTO request (name,go,back,task,vanNum,status)
+        VALUES ('$name','$go','$back','$task','$vanNum','$status')";
 
  mysqli_query($mysqli,$sql_query);
 

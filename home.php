@@ -78,7 +78,7 @@ if ($_SESSION["user_id"] != null){
                         <a class="page-scroll" href="vandetail.php"><i class="fa fa-bus fa-lg"></i><font color="#798481" size="4">&nbsp; ข้อมูลรถตู้</a></font>
                     </li>
                     <li>
-                        <a class="page-scroll" href="vanprocess.php"><i class="glyphicon glyphicon-cloud-download"></i><font color="#798481" size="4">&nbsp; ดาวโหลดเอกสาร</a></font>
+                        <a class="page-scroll" href="pdfGen.php"><i class="glyphicon glyphicon-cloud-download"></i><font color="#798481" size="4">&nbsp; ดาวโหลดเอกสาร</a></font>
                     </li>
                 </ul>
 
@@ -89,12 +89,15 @@ if ($_SESSION["user_id"] != null){
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                      <li>
-                            <a href="viewcalendar.php"><i class="fa fa-calendar-o fa-lg"></i><font color="#798481" size="4">&nbsp; ข้อมูลแบบปฏิทิน</a></font>
+                        <li >
+                            <?php include 'clock.php'?>
+                        </li>
+                        <li>
+                            <a href="viewcalendar.php"><i class="fa fa-calendar-o fa-lg"></i><font color="#798481" size="4">&nbsp; ยืนยันภาระกิจ</a></font>
                         </li>
                         <br>
                         <li>
-                            <a href="statsvan.php"><i class="fa fa-bar-chart fa-lg"></i><font color="#798481" size="4"> &nbsp; สถิติการใช้รถยนต์</a></font>
+                            <a href="demo.php"><i class="fa fa-bar-chart fa-lg"></i><font color="#798481" size="4"> &nbsp; สถิติการใช้รถยนต์</a></font>
                         </li>
 
 

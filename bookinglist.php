@@ -19,7 +19,8 @@ if ($_SESSION["user_id"] != null){
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="css/search.css" rel="stylesheet">
+    <link href="js/locales/search.js" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="css/logo-nav.css" rel="stylesheet">
     <link href="css/sb-admin-2.css" rel="stylesheet">
@@ -38,9 +39,9 @@ if ($_SESSION["user_id"] != null){
     <?php
     include 'connectDB.php';
     $status = "Waiting";
-    $result = $mysqli->query("SELECT * FROM `request` WHERE status = '$status'");
+    $result = $mysqli->query("SELECT * FROM `request`");
     ?>
-    <meta http-equiv="refresh" content="5" />
+    <meta http-equiv="refresh" content="10" />
 </head>
 
 <body>
@@ -87,12 +88,15 @@ if ($_SESSION["user_id"] != null){
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                      <li>
-                            <a href="viewcalendar.php"><i class="fa fa-calendar-o fa-lg"></i><font color="#798481" size="4">&nbsp; ข้อมูลแบบปฏิทิน</a></font>
+                        <li >
+                            <?php include 'clock.php'?>
+                        </li>
+                        <li>
+                            <a href="viewcalendar.php"><i class="fa fa-calendar-o fa-lg"></i><font color="#798481" size="4">&nbsp; ยืนยันภาระกิจ</a></font>
                         </li>
                         <br>
                         <li>
-                            <a href="statsvan.php"><i class="fa fa-bar-chart fa-lg"></i><font color="#798481" size="4"> &nbsp; สถิติการใช้รถยนต์</a></font>
+                            <a href="demo.php"><i class="fa fa-bar-chart fa-lg"></i><font color="#798481" size="4"> &nbsp; สถิติการใช้รถยนต์</a></font>
                         </li>
                         <br>
                         <li>
@@ -126,34 +130,39 @@ if ($_SESSION["user_id"] != null){
             </div>
             &nbsp;
             <div class="col-lg-12">
-                <table class="table table-bordered">
-                    <thead class="thead-default">
+                <div class="form-group pull-right">
+                    <input type="text" class="search form-control" placeholder="What you looking for?">
+                </div>
+                <span class="counter pull-right"></span>
+                <table class="table table-hover table-bordered results">
+                    <thead>
                     <tr>
-                        <div class="col-lg-1"><th>ลำดับที่</th></div>
-                        <div class="col-lg-3"><th>ชื่อผู้ขอใช้งาน</th></div>
-                        <div class="col-lg-2"><th>เวลาไป</th></div>
-                        <div class="col-lg-2"><th>เวลากลับ</th></div>
-                        <div class="col-lg-4"><th>ภารกิจ</th></div>
-                        <div class="col-lg-4"><th>รถตู้คันที่</th></div>
-                        <div class="col-lg-4"><th>สถานะ</th></div>
-                        <div class="col-lg-4"><th></th></div>
+                        <th>ลำดับ</th>
+                        <th class="col-md-3 col-xs-3">ชื่อผู้ขอใช้งาน</th>
+                        <th class="col-md-3 col-xs-3">เวลาไป</th>
+                        <th class="col-md-3 col-xs-3">เวลากลับ</th>
+                        <th class="col-md-5 col-xs-5">ภารกิจ</th>
+                        <th class="col-md-3 col-xs-3">รถตู้คันที่</th>
+                        <th class="col-md-2 col-xs-2">สถานะ</th>
+                        <th></th>
                     </tr>
+
                     </thead>
-                    <tbody>
+                    <tbody class="searchable">
                     <?php
                     $no =1;
                     while ( $row = $result->fetch_assoc()) {
                         echo
                         "<tr>
                     <th>{$no}</th>
-                    <th>{$row['name']}</th>
-                    <th>{$row['go']}</th>
-                    <th>{$row['back']}</th>
-                    <th>{$row['task']}</th>
-                    <th>{$row['vanNum']}</th>
-                    <th>{$row['status']}</th>
-                    <th><a class=\"btn btn-primary\" href=\"accept.php?id={$row['id']}\">แก้ไข</a></th>
-                    </tr>\n";
+                    <td>{$row['name']}</td>
+                    <td>{$row['go']}</td>
+                    <td>{$row['back']}</td>
+                    <td>{$row['task']}</td>
+                    <td>{$row['vanNum']}</td>
+                    <td>{$row['status']}</td>
+                    <td><a class=\"btn btn-primary\" href=\"accept.php?id={$row['id']}\">แก้ไข</a></td>
+                    </tr>";
                         $no += 1;
                     }
                     ?>
@@ -176,7 +185,34 @@ if ($_SESSION["user_id"] != null){
     <script src="js/bootstrap.min.js"></script>
 
 </body>
+<script>
+    $(document).ready(function() {
+        $(".search").keyup(function () {
+            var searchTerm = $(".search").val();
+            var listItem = $('.results tbody').children('tr');
+            var searchSplit = searchTerm.replace(/ /g, "'):containsi('")
 
+            $.extend($.expr[':'], {'containsi': function(elem, i, match, array){
+                return (elem.textContent || elem.innerText || '').toLowerCase().indexOf((match[3] || "").toLowerCase()) >= 0;
+            }
+            });
+
+            $(".results tbody tr").not(":containsi('" + searchSplit + "')").each(function(e){
+                $(this).attr('visible','false');
+            });
+
+            $(".results tbody tr:containsi('" + searchSplit + "')").each(function(e){
+                $(this).attr('visible','true');
+            });
+
+            var jobCount = $('.results tbody tr[visible="true"]').length;
+            $('.counter').text(jobCount + ' item');
+
+            if(jobCount == '0') {$('.no-result').show();}
+            else {$('.no-result').hide();}
+        });
+    });
+</script>
 </html>
 <?php
 }else {
