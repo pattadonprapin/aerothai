@@ -14,7 +14,7 @@ elseif(isset($_GET['reject-btn']))
 {
     $id = $_GET['id'];
     $mysqli->query("DELETE FROM `request` WHERE  id='$id'");
-    echo "คุณได้ยกเลิกคำขอใช้รถแล้ว";
+    echo "คุณได้ยกเลิกคำขอใช้รถตู้แล้ว";
 }
 header("location:home.php");
 

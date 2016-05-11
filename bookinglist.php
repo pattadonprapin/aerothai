@@ -22,7 +22,6 @@ if ($_SESSION["user_id"] != null){
     <link href="css/search.css" rel="stylesheet">
     <link href="js/locales/search.js" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="css/logo-nav.css" rel="stylesheet">
     <link href="css/sb-admin-2.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
@@ -48,7 +47,7 @@ if ($_SESSION["user_id"] != null){
 
     <div id="wrapper">
     <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -57,7 +56,7 @@ if ($_SESSION["user_id"] != null){
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-               <?php
+              <!--  <?php
                 error_reporting(0);
                 if ($_SESSION["user_id"] != null){
                   echo '<a class="navbar-brand" href="home.php">';}
@@ -65,7 +64,7 @@ if ($_SESSION["user_id"] != null){
                 <?php
                  if  ($_SESSION["user_id"] == null){
                    echo '<a class="navbar-brand" href="index.php">';}
-                  ?>
+                  ?> -->
                     <img src = "image/band.png" width="250" height="50" >
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -94,11 +93,9 @@ if ($_SESSION["user_id"] != null){
                         <li>
                             <a href="viewcalendar.php"><i class="fa fa-calendar-o fa-lg"></i><font color="#798481" size="4">&nbsp; ยืนยันภาระกิจ</a></font>
                         </li>
-                        <br>
                         <li>
                             <a href="demo.php"><i class="fa fa-bar-chart fa-lg"></i><font color="#798481" size="4"> &nbsp; สถิติการใช้รถยนต์</a></font>
                         </li>
-                        <br>
                         <li>
                             <a href="home.php"><i class="fa fa-arrow-circle-left fa-lg"></i><font color="#798481" size="4"> &nbsp; กลับ</a></font>
                         </li>

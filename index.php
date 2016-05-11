@@ -16,7 +16,6 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/logo-nav.css" rel="stylesheet">
     <link href="css/sb-admin-2.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/timeline.css" rel="stylesheet">
@@ -42,10 +41,10 @@
 
     <div id="wrapper">
     <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+    <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -79,10 +78,10 @@
                         </li>
 
                         <li>
-                            <a href="bookingform.php"><i class="fa fa-bus fa-lg"></i><font color="#798481" size="4">&nbsp; ยื่นคำขอใช้งานรถตู้</a></font>
+                            <a href="bookingform.php"><i class="fa fa-hand-o-right fa-lg"></i><font color="#798481" size="4">&nbsp; ยื่นคำขอใช้งานรถตู้</a></font>
                         </li>
                         <li>
-                            <a href="checkRequest.php"><i class="fa fa-list-alt fa-lg"></i><font color="#798481" size="4">&nbsp; เช็คสถานะการขอใช้งาน</a></font>
+                            <a href="checkRequest.php"><i class="fa fa-check fa-lg"></i><font color="#798481" size="4">&nbsp; เช็คสถานะการขอใช้งาน</a></font>
                         </li>
                          <li class="btn-danger divider" style="height:3px;"></li>
                          <?php
@@ -136,7 +135,7 @@
          <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                 <h3 class="page-header alert btn-info"><i class="fa fa-comment fa-fw"></i>&nbsp; รถตู้ทั้งหมด</h3>
+                 <h4 class="page-header alert btn-info"><i class="fa fa-th-large fa-fw"></i>&nbsp; รถตู้ทั้งหมด</h4>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
