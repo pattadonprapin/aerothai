@@ -35,6 +35,9 @@
 
 	<?php
 	include ('connectDB.php');
+
+	$result = $mysqli->query("SELECT * FROM `vandetail` ");
+	$result2 = $mysqli->query("SELECT * FROM `report` ");
 	?>
 </head>
 <style>
@@ -105,10 +108,17 @@
 
 						<div class="col">
 							<div id="population_chart" data-sort="false" data-width="800" class="jChart chart-lg" name="สถิติการใช้รถตู้ของวันที่">
-								<div class="define-chart-row" data-color="#84d6ff" title="รถตู้คันที่ 1">14</div>
-								<div class="define-chart-row" data-color="#38BCFF" title="รถตู้คันที่ 2">8</div>
-								<div class="define-chart-row" data-color="#00A9FF" title="รถตู้คันที่ 3">10</div>
-								<div class="define-chart-row" data-color="#008DD3" title="รถตู้คันที่ 4">16</div>
+								<?php
+
+								while ( $row = $result->fetch_assoc()) {
+								echo
+								"
+								<div class=\"define-chart-row\" title=\"รถตู้คันที่\"{$row['number']}>14</div>
+								
+								";
+
+								}
+								?>
 								<div class="define-chart-footer">5</div>
 								<div class="define-chart-footer">10</div>
 								<div class="define-chart-footer">15</div>
