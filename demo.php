@@ -36,8 +36,8 @@
 	<?php
 	include ('connectDB.php');
 
+
 	$result = $mysqli->query("SELECT * FROM `vandetail` ");
-	$result2 = $mysqli->query("SELECT * FROM `report` ");
 	?>
 </head>
 <style>
@@ -113,7 +113,7 @@
 								while ( $row = $result->fetch_assoc()) {
 								echo
 								"
-								<div class=\"define-chart-row\" title=\"รถตู้คันที่\"{$row['number']}>14</div>
+								<div class=\"define-chart-row\" title=\"รถตู้คันที่ {$row['number']}\">14</div>
 								
 								";
 
