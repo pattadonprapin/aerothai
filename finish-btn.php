@@ -11,7 +11,8 @@ $id = $_GET['id'];
     $row = $result->fetch_assoc();
 
     $mysqli->query("INSERT INTO `report` SET vanNum = '{$row['vanNum']}', task = '{$row['task']}'");
-
+    $mysqli->query("UPDATE vandetail SET status = 0 ");
+    $mysqli->query("DELETE FROM request WHERE id = '$id' ");
 
 header("location:home.php");
 

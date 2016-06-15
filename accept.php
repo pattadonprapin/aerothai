@@ -41,7 +41,7 @@ if ($_SESSION["user_id"] != null){
     $result = $mysqli->query("SELECT * FROM `request` WHERE  id='$id'");
     $row = $result->fetch_assoc();
 
-    $result2 = $mysqli->query("SELECT * FROM `vandetail`");
+    $result2 = $mysqli->query("SELECT * FROM `vandetail` WHERE  status= 0 ");
 
     ?>
 </head>
@@ -93,7 +93,7 @@ if ($_SESSION["user_id"] != null){
             <div class="sidebar-nav navbar-collapse">
                 <ul class="nav" id="side-menu">
                     <li>
-                        <a href="viewcalendar.php"><i class="fa fa-calendar-o fa-lg"></i><font color="#798481" size="4">&nbsp; ข้อมูลแบบปฏิทิน</a></font>
+                        <a href="viewcalendar.php"><i class="fa fa-calendar-o fa-lg"></i><font color="#798481" size="4">&nbsp; ยืนยันภาระกิจ</a></font>
                     </li>
                     <br>
                     <li>
