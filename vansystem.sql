@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 10, 2016 at 10:02 AM
+-- Generation Time: Jun 15, 2016 at 09:47 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.5
 
@@ -29,19 +29,10 @@ SET time_zone = "+00:00";
 CREATE TABLE `report` (
   `id` int(2) NOT NULL,
   `vanNum` int(2) NOT NULL,
-  `task` varchar(40) NOT NULL
+  `task` varchar(40) NOT NULL,
+  `date` varchar(20) NOT NULL,
+  `time` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `report`
---
-
-INSERT INTO `report` (`id`, `vanNum`, `task`) VALUES
-(1, 2, 'asdasdasdasdasd'),
-(2, 1, 'à¹„à¸› à¸”à¸¹à¸‡à¸²à¸™à¸ˆà¸±à¸‡à¸«à¸§à¸±'),
-(3, 1, 'à¹„à¸› à¸”à¸¹à¸‡à¸²à¸™à¸ˆà¸±à¸‡à¸«à¸§à¸±'),
-(4, 1, 'à¹„à¸› à¸”à¸¹à¸‡à¸²à¸™à¸ˆà¸±à¸‡à¸«à¸§à¸±'),
-(5, 1, 'à¹„à¸› à¸”à¸¹à¸‡à¸²à¸™à¸ˆà¸±à¸‡à¸«à¸§à¸±');
 
 -- --------------------------------------------------------
 
@@ -64,10 +55,7 @@ CREATE TABLE `request` (
 --
 
 INSERT INTO `request` (`id`, `name`, `go`, `back`, `task`, `vanNum`, `status`) VALUES
-(4, 'asdasdasdasdasd', '2016-05-19T11:11', '2016-05-20T11:11', 'asdasdasdasdasd', '2', 'Accepted'),
-(5, 'à¸“à¸±à¸à¸žà¸‡à¸¨à¹Œ à¸¥à¸±à¸‡à¸à¸²à¸£', '2016-05-23T11:11', '2016-05-24T16:00', 'à¹„à¸› à¸”à¸¹à¸‡à¸²à¸™à¸ˆà¸±à¸‡à¸«à¸§à¸±', '1', 'Accepted'),
-(6, 'à¸ˆà¸£à¸±à¸ªà¸¨à¸£à¸µ', '2016-05-08T14:00', '2016-05-08T15:00', 'à¹„à¸› à¸ªà¹‚à¸¡à¸ªà¸£ à¹€à¸žà¸·à¹ˆà¸­à¹„à¸›à¸ªà¹ˆà¸‡à¸‚à¸­à¸‡', '2', 'Accepted'),
-(7, 'à¸§à¸‡à¸¨à¸˜à¸£', '2016-05-08T13:30', '2016-05-08T14:30', 'à¹„à¸›à¸ªà¸™à¸²à¸¡à¸šà¸´à¸™à¹€à¸Šà¸µà¸¢à¸‡à¹ƒà¸«à¸¡à¹ˆ', 'à¸¢à¸±à¸‡à¹„à¸¡à¹ˆà¸¡à¸µà¸£à¸–à¸§à¹ˆà¸²à', 'Waiting');
+(9, 'à¸“à¸±à¸à¸žà¸‡à¸¨à¹Œ à¸¥à¸±à¸‡à¸à¸²à¸£à¹Œà¸žà¸´à¸™à¸˜à¸¸à¹Œ', '2016-06-15T11:30', '2016-06-15T00:00', 'à¹„à¸›à¸ªà¸™à¸²à¸¡à¸šà¸´à¸™à¹€à¸Šà¸µà¸¢à¸‡à¹ƒà¸«à¸¡à¹ˆ', 'à¸¢à¸±à¸‡à¹„à¸¡à¹ˆà¸¡à¸µà¸£à¸–à¸§à¹ˆà¸²à', 'Waiting');
 
 -- --------------------------------------------------------
 
@@ -127,16 +115,19 @@ CREATE TABLE `vandetail` (
   `detail` varchar(30) NOT NULL,
   `driver` varchar(25) NOT NULL,
   `license` varchar(8) NOT NULL,
-  `number` int(2) NOT NULL
+  `number` int(2) NOT NULL,
+  `status` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `vandetail`
 --
 
-INSERT INTO `vandetail` (`id`, `name`, `detail`, `driver`, `license`, `number`) VALUES
-(1, 'Toyota', '4 seat rows, turbo 3.0 D4D', 'Mr. Nattaphong Lungkrapin', 'JID-6787', 1),
-(2, 'Toyota', 'VIP seat', 'Mr. J', 'TYU-3544', 2);
+INSERT INTO `vandetail` (`id`, `name`, `detail`, `driver`, `license`, `number`, `status`) VALUES
+(1, 'Toyota', '4 seat rows, turbo 3.0 D4D', 'Mr. Nattaphong Lungkrapin', 'JID-6787', 1, 0),
+(2, 'Toyota', 'VIP seat', 'Mr. J', 'TYU-3544', 2, 0),
+(3, 'Toyota', '8 seats', 'Mr. Nuttawut', 'JK-07773', 3, 0),
+(4, 'Toyota', '12 seats', 'Mr. Chinnawat', 'TY-9811', 4, 0);
 
 --
 -- Indexes for dumped tables
@@ -180,12 +171,12 @@ ALTER TABLE `vandetail`
 -- AUTO_INCREMENT for table `report`
 --
 ALTER TABLE `report`
-  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `request`
 --
 ALTER TABLE `request`
-  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `timeline`
 --
@@ -200,7 +191,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `vandetail`
 --
 ALTER TABLE `vandetail`
-  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
